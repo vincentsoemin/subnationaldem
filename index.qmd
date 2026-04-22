@@ -1,0 +1,43 @@
+---
+title: "Presentation"
+format: beamer
+---
+
+```{r}
+# libraries
+ library(tidyverse)
+ 
+# load data
+ load('SDI.RData')
+ 
+# limit to my state
+ df <-
+   data_sdi |> 
+   filter(region_name == 'CENTRO')
+ 
+ # Custom theme 
+mytheme <- theme_minimal() +
+  theme(
+    plot.title = element_text(size = 15, face = "bold"),
+    plot.subtitle = element_text(size = 10),
+    plot.caption = element_text(size = 8, hjust = 0),
+    axis.text = element_text(size = 9),
+    axis.title.x = element_text(size = 9),
+    axis.title.y = element_text(size = 9),
+    panel.grid.minor = element_blank()
+  )
+```
+
+# Analysis Slide
+```{r}
+# graph dem by state over time
+ df |> 
+  ggplot(aes(x = year, y = SUR_index_sub_exe, color = state_name)) +
+  geom_line() +
+  labs(
+    title = "Level of subnational democracy in the executive branch",
+    subtitle = "Indices of Cordoba state and Entre Rios state are declining"
+  ) +
+  mytheme
+
+```
