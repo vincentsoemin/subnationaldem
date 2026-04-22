@@ -1,6 +1,6 @@
 ---
 title: "Presentation"
-format: beamer
+format: revealjs
 ---
 
 ```{r}
